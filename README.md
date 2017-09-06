@@ -1,16 +1,16 @@
 
-## Dev-setup
+## dev-setup
     
-    Setting up development network.
+    Setting up a development network
 
-## Private network
+## private network
     
-    Setting up private network.
+    Setting up a private network
 
-## Smart contract
+## smart contract
     
-    Solidity: Data types, Blockchain variables, Design patterns and security considerations.
+    Solidity: data types, blockchain variables, design patterns, and security considerations
 
 ## truffle
     
-    Truffle is a development framework for implementing and testing smart contracts.
+    Truffle is a development framework for implementing and testing smart contracts
