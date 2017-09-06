@@ -58,7 +58,6 @@ contract TestContract {
     MulEvent(a, b, c);
   }
 
-
   function getValue() constant returns(uint256) {
     return c;
 
@@ -210,7 +209,7 @@ console.log('tx id: ', txId);
 var Web3 = require('web3');
 var web3 = new Web3();
 
-web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8546"));
+web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 
 console.log('RPC connection:', web3.isConnected());
 
