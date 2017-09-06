@@ -1,11 +1,11 @@
 
 ## Dev-setup
     
-    Setting up development network
+    Setting up development network.
 
 ## Private network
     
-    Setting up private network
+    Setting up private network.
 
 ## Smart contract
     
@@ -13,4 +13,4 @@
 
 ## truffle
     
-    Truffle is a development framework for implementing and testing smart contract.
+    Truffle is a development framework for implementing and testing smart contracts.
