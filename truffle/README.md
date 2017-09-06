@@ -107,9 +107,3 @@ truffle test
 ## JS example
 
 For test cases in JS, and writing tests for payable functions, refer to [conference-truffle](https://github.com/aarongoa/conference-truffle)
-
-
----
-
-## License
-MIT
