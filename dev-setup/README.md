@@ -43,7 +43,7 @@ Other Operating systems: <https://github.com/ethereum/go-ethereum/wiki/Building-
 It will create a directory where all the chain data including wallet keys will be stored.
 
 ```sh
-$ sudo mkdir dev
+$ mkdir dev
 ```
 
 
@@ -66,7 +66,7 @@ Copy the displayed account address
 ###  3] Start Ethereum client
 This command will start the Ethereum client process.
 ```sh
- $ sudo geth --datadir="dev" --dev  --etherbase="0x0000000000000000000000000000000000000000"  --unlock 0 console  
+ $ geth --datadir="dev" --dev  --etherbase="0x0000000000000000000000000000000000000000"  --unlock 0 console  
 ```
  
  -- dev flag - to use the pre-configured settings provided by geth.
@@ -122,5 +122,5 @@ OR
 
 sample:
 ```sh
-$ sudo geth --datadir="dev" --dev --rpc --rpcaddr "0.0.0.0" --rpcport 8546 --rpccorsdomain "*"  --etherbase="0x0000000000000000000000000000000000000000"  --nodiscover --unlock 0 console
+$ geth --datadir="dev" --dev --rpc --rpcaddr "0.0.0.0" --rpcport 8546 --rpccorsdomain "*"  --etherbase="0x0000000000000000000000000000000000000000"  --nodiscover --unlock 0 console
 ```
