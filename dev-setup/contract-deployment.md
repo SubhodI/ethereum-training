@@ -22,7 +22,7 @@ sudo apt-get install -y nodejs
 
 Install web3 npm package
 ```sh
-npm install web3
+npm install web3@0.18
 ```
 # Using browser
 Compile Deploy contracts using browser 
