@@ -49,7 +49,7 @@ Default directory = `/root/.ethereum/keystore/`
 
 
 ```sh
-$ sudo mkdir peer1
+$ mkdir peer1
 $ geth --datadir="peer1" account new
 Passphrase: xxxxxxxx
 Repeat passphrase: xxxxxxxx
@@ -75,7 +75,7 @@ sample here:
 
     "alloc": {
         "0x1517866f9935de27fea9da34e5a89c2de39855a2": {
-            "balance": "1000000000000000000"
+            "balance": "10000000000000000000"
         }
     },
 
@@ -97,7 +97,7 @@ sample here:
 ```javascript
 chainid = networkId 
 ```
-* Add Ethereum address of accounts created and balance in Wei (1 ethers=1000000000000000000 wei)
+* Add Ethereum address of accounts created and balance in Wei (1 ethers=1 x 10^18 wei)
 ```javascript
 alloc:{
 "[ Address here with 0x ]": { "balance": "1000000000000000000"}
@@ -107,7 +107,7 @@ alloc:{
 ###  4] Create genesis block in both peers:
  This command initializes the genesis block for the network. 
 ```sh
- $ sudo geth init "PathToGenesis.json"
+ $  geth init "PathToGenesis.json"
 ```
 
 ###  5] Start first peer:
@@ -123,7 +123,7 @@ This command starts the ethereum client process
  --unlock - keep account unlocked for the session. 0 - account [0] 
 
 ```sh
-$ sudo geth --datadir="peer1" --networkid 56 --port 30303 --rpc --rpcport 8545 --rpcaddr "0.0.0.0"  --rpccorsdomain "*"  --nodiscover --unlock 0 console  
+$  geth --datadir="peer1"  --networkid 56 --port 30303 --rpc --rpcport 8545 --rpcaddr "0.0.0.0"  --rpccorsdomain "*"  --nodiscover --unlock 0 console  
 ```
 
 
@@ -134,7 +134,7 @@ Start second peer as Miner
  --mine - Start mining
 
 ```sh
-$ sudo geth --datadir="peer2"  --networkid 56 --port 30304 --rpc  --rpcport 8546 --rpcaddr "0.0.0.0" --rpccorsdomain "*" --etherbase "0x0000000000000000000000000000000000000000" --mine --nodiscover --unlock 0 console
+$  geth --datadir="peer2" --networkid 56 --port 30304 --rpc  --rpcport 8546 --rpcaddr "0.0.0.0" --rpccorsdomain "*" --etherbase "0x0000000000000000000000000000000000000000" --mine --nodiscover --unlock 0 console
 ```
 stop mining:
 ```sh
