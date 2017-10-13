@@ -63,6 +63,11 @@ Address: {4e6cf0ed2d8bbf1fbbc9f2a100602ceba4bf1319}
 ###  2]  Setup genesis.json
  The genesis block is the start of the blockchain, and the genesis.json is the file that defines it.
 
+* create a json file "genesis.json" on both peer terminals
+```sh
+$ nano genesis.json
+```
+
 sample here:
 ```javascript
 {
@@ -74,7 +79,7 @@ sample here:
     },
 
     "alloc": {
-        "0x1517866f9935de27fea9da34e5a89c2de39855a2": {
+        "0x4e6cf0ed2d8bbf1fbbc9f2a100602ceba4bf1319": {
             "balance": "10000000000000000000"
         }
     },
@@ -97,30 +102,38 @@ sample here:
 ```javascript
 chainid = networkId 
 ```
-* Add Ethereum address of accounts created and balance in Wei (1 ethers=1 x 10^18 wei)
-```javascript
-alloc:{
-"[ Address here with 0x ]": { "balance": "1000000000000000000"}
-}
-```
+
 
 ###  4] Create genesis block in both peers:
  This command initializes the genesis block for the network. 
 ```sh
- $  geth init "PathToGenesis.json"
+ $  geth --datadir="peer1"  init "Path-To-Genesis.json"
+```
+```sh
+INFO [10-12|15:44:56] Allocated cache and file handles         database=/home/blockchain/workspace/peer1/geth/chaindata cache=16 handles=16
+INFO [10-12|15:44:56] Writing custom genesis block
+INFO [10-12|15:44:56] Successfully wrote genesis state         database=chaindata                                       hash=6b823d…7db27e
+INFO [10-12|15:44:56] Allocated cache and file handles         database=/home/blockchain/workspace/peer1/geth/lightchaindata cache=16 handles=16
+INFO [10-12|15:44:56] Writing custom genesis block
+INFO [10-12|15:44:56] Successfully wrote genesis state         database=lightchaindata                                       hash=6b823d…7db27e
+```
+
+* in second terminal
+```sh
+ $  geth --datadir="peer2"  init "PathToGenesis.json"
 ```
 
 ###  5] Start first peer:
 This command starts the ethereum client process
- --datadir -data directory that your private chain data will be stored in.
- -- networkid flag - select network id.
- --port - network listening port. Default port is 30303
- --rpc start rpc server.This is generally enabled by default in Geth.
- --rpcport select rpc port. Default port is 8545
- --rpcaddr "0.0.0.0"   '(Not Safe)'
- --rpccorsdomain specify URLs which can connect to your node in order to perform RPC client tasks '(Not Safe)'
- --nodiscover Dont connect to other peers automatically
- --unlock - keep account unlocked for the session. 0 - account [0] 
+ * --datadir -data directory that your private chain data will be stored in.
+ * -- networkid flag - select network id.
+ * --port - network listening port. Default port is 30303
+ * --rpc start rpc server.This is generally enabled by default in Geth.
+ * --rpcport select rpc port. Default port is 8545
+ * --rpcaddr "0.0.0.0"   '(Not Safe)'
+ * --rpccorsdomain specify URLs which can connect to your node in order to perform RPC client tasks '(Not Safe)'
+ * --nodiscover Dont connect to other peers automatically
+ * --unlock - keep account unlocked for the session. 0 - account [0] 
 
 ```sh
 $  geth --datadir="peer1"  --networkid 56 --port 30303 --rpc --rpcport 8545 --rpcaddr "0.0.0.0"  --rpccorsdomain "*"  --nodiscover --unlock 0 console  
@@ -129,12 +142,14 @@ $  geth --datadir="peer1"  --networkid 56 --port 30303 --rpc --rpcport 8545 --rp
 
 ### 6] Start Second peer at different port : 
 
-Start second peer as Miner
- -- etherbase flag - set miner account.
- --mine - Start mining
+ Start second peer as Miner
 
+* -- etherbase flag - set miner account.
+* --mine - Start mining
+
+ Set etherbase account in below command.
 ```sh
-$  geth --datadir="peer2" --networkid 56 --port 30304 --rpc  --rpcport 8546 --rpcaddr "0.0.0.0" --rpccorsdomain "*" --etherbase "0x0000000000000000000000000000000000000000" --mine --nodiscover --unlock 0 console
+$  geth --datadir="peer2" --networkid 56 --port 30304 --rpc  --rpcport 8546 --rpcaddr "0.0.0.0" --rpccorsdomain "*" --etherbase "" --mine --nodiscover --unlock 0 console
 ```
 stop mining:
 ```sh
@@ -151,8 +166,7 @@ admin.nodeInfo.enode
 ```
 * add peer with enode id
 ```
- admin.addPeer("enode://704899633efe7dc6178dad6e66c318bebb8633bc8fe141b2f53e7104b5feee3f0c5eb153e634d9939e73b75c268d36a16bd5f7b15d91090452f60508455cc61d
-@33.4.2.1:30303")
+ admin.addPeer("enode://704899633efe7dc6178dad6e66c318bebb8633bc8fe141b2f53e7104b5feee3f0c5eb153e634d9939e73b75c268d36a16bd5f7b15d91090452f60508455cc61d@33.4.2.1:30303")
 ```
 format: "enode://pubkey@ip:port"
 
